@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGAP - Pengadilan Negeri Muara Teweh</title>
+    <meta name="description" content="Sistem Informasi Gerbang Akses Pengadilan - PN Muara Teweh. Layanan Hukum, Pidana, Perdata, dan Posbakum.">
+    <meta property="og:title" content="SIGAP - PN Muara Teweh">
+    <meta property="og:description" content="Sistem Informasi Gerbang Akses Pengadilan Negeri Muara Teweh">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+<style>
+:root{
+    --H:#1B6B3A;--Hdk:#0F4726;--Hlt:#2E8B57;--Hpale:#EAF6EE;
+    --K:#F5C400;--Klt:#FFE066;--Kpale:#FFFBEA;
+    --cream:#FAFDF6;--text:#1A2E1A;--muted:#5A7060;
+    --border:#D8EDDF;--white:#FFFFFF;
+    --cH:#1B6B3A;--cHb:#EAF6EE;
+    --cP:#B85A00;--cPb:#FFF3E8;
+    --cPd:#1A3E6E;--cPdb:#EEF3FF;
+    --cPB:#6B3AB8;--cPBb:#F3EEFF;
+    --r:20px;--rs:12px;
+    --sh:0 4px 20px rgba(27,107,58,.12);
+    --shm:0 8px 32px rgba(27,107,58,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#D8EFE0;color:var(--text);min-height:100vh}
+.wrap{max-width:480px;margin:0 auto;background:var(--cream);min-height:100vh;position:relative;overflow-x:hidden;box-shadow:0 0 60px rgba(0,0,0,.16)}
+
+/* ── HEADER ── */
+.site-header{background:linear-gradient(135deg,var(--Hdk) 0%,var(--H) 65%,var(--Hlt) 100%);padding:13px 17px;position:sticky;top:0;z-index:200;box-shadow:var(--shm)}
+.h-inner{display:flex;align-items:center;gap:11px}
+.logo-ring{width:48px;height:48px;border-radius:50%;border:2.5px solid var(--K);background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 4px rgba(245,196,0,.2);overflow:hidden}
+.logo-ring img{width:34px;height:34px;object-fit:contain}
+.logo-ring i{font-size:19px;color:var(--Klt)}
+.h-text h1{font-size:11px;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.5px;line-height:1.3}
+.h-text p{font-size:9px;color:rgba(255,255,255,.6);margin-top:2px;line-height:1.4}
+.h-badge{margin-left:auto;flex-shrink:0;background:var(--K);color:var(--Hdk);font-size:8px;font-weight:800;padding:3px 8px;border-radius:20px;letter-spacing:.6px;text-transform:uppercase}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(150deg,var(--Hdk) 0%,var(--H) 55%,#2FAD60 100%);padding:28px 20px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:190px;height:190px;border-radius:50%;background:rgba(245,196,0,.10);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(245,196,0,.18);border:1px solid rgba(245,196,0,.4);border-radius:30px;padding:4px 12px;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--Klt);margin-bottom:12px;position:relative;z-index:1}
+.hero-seal{width:78px;height:78px;border-radius:50%;border:2.5px solid var(--K);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;box-shadow:0 0 0 8px rgba(245,196,0,.12),var(--shm);position:relative;z-index:1}
+.hero-seal i{font-size:28px;color:var(--Klt)}
+.hero h2{font-family:'Lora',serif;font-size:27px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:5px;position:relative;z-index:1}
+.hero h2 span{color:var(--Klt)}
+.hero-ak{font-size:10.5px;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:16px;position:relative;z-index:1}
+.hero-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;position:relative;z-index:1}
+.hero-pill{background:rgba(255,255,255,.12);border:1px solid rgba(245,196,0,.3);border-radius:30px;padding:5px 11px;display:flex;align-items:center;gap:5px}
+.hero-pill i{font-size:9.5px;color:var(--Klt)}
+.hero-pill span{font-size:10px;font-weight:600;color:#fff}
+
+/* ── SEC TITLE ── */
+.sec-title{padding:22px 18px 5px;display:flex;align-items:center;gap:10px}
+.sec-line{width:4px;height:25px;background:linear-gradient(to bottom,var(--K),var(--H));border-radius:4px;flex-shrink:0}
+.sec-title h3{font-family:'Lora',serif;font-size:16.5px;font-weight:700;color:var(--Hdk)}
+.sec-title p{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ── MENU GRID ── */
+.menu-grid{padding:5px 17px;display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.mc{border-radius:17px;overflow:hidden;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none;display:block;box-shadow:var(--sh)}
+.mc:hover{transform:translateY(-3px);box-shadow:var(--shm)}
+.mc:active{transform:scale(.97)}
+.mc-top{padding:15px 13px 9px}
+.mc-ico{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:9px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.mc-t{font-size:12px;font-weight:800;line-height:1.3;margin-bottom:3px}
+.mc-s{font-size:9.5px;color:var(--muted);line-height:1.5}
+.mc-foot{padding:7px 13px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(0,0,0,.05)}
+.mc-cnt{font-size:9px;font-weight:700}
+.mc-arr{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8.5px;color:#fff}
+.mH .mc-ico{background:var(--cHb);color:var(--cH)} .mH .mc-t{color:var(--cH)} .mH .mc-foot{background:var(--cHb)} .mH .mc-cnt{color:var(--cH)} .mH .mc-arr{background:var(--cH)}
+.mP .mc-ico{background:var(--cPb);color:var(--cP)} .mP .mc-t{color:var(--cP)} .mP .mc-foot{background:var(--cPb)} .mP .mc-cnt{color:var(--cP)} .mP .mc-arr{background:var(--cP)}
+.mPd .mc-ico{background:var(--cPdb);color:var(--cPd)} .mPd .mc-t{color:var(--cPd)} .mPd .mc-foot{background:var(--cPdb)} .mPd .mc-cnt{color:var(--cPd)} .mPd .mc-arr{background:var(--cPd)}
+.mPB .mc-ico{background:var(--cPBb);color:var(--cPB)} .mPB .mc-t{color:var(--cPB)} .mPB .mc-foot{background:var(--cPBb)} .mPB .mc-cnt{color:var(--cPB)} .mPB .mc-arr{background:var(--cPB)}
+
+/* ── ALUR ── */
+.alur-box{margin:8px 17px 0;background:linear-gradient(140deg,var(--Hdk) 0%,var(--H) 100%);border-radius:var(--r);padding:18px 17px;position:relative;overflow:hidden}
+.alur-box::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(245,196,0,.12);pointer-events:none}
+.at{font-family:'Lora',serif;font-size:14px;color:var(--Klt);font-weight:700;margin-bottom:2px}
+.as{font-size:10px;color:rgba(255,255,255,.6);margin-bottom:14px}
+.alur-steps{display:flex;flex-direction:column}
+.alur-step{display:flex;align-items:flex-start;gap:11px;position:relative}
+.alur-step:not(:last-child)::after{content:'';position:absolute;left:12px;top:30px;width:2px;height:calc(100% - 5px);background:rgba(245,196,0,.3)}
+.sn{width:26px;height:26px;border-radius:50%;background:var(--K);color:var(--Hdk);font-size:10.5px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;box-shadow:0 2px 8px rgba(245,196,0,.4)}
+.sb{padding:2px 0 14px}
+.sname{font-size:11.5px;font-weight:700;color:#fff;margin-bottom:1px}
+.sdet{font-size:10px;color:rgba(255,255,255,.6);line-height:1.5}
+
+/* ── KONTAK ── */
+.kontak-box{margin:8px 17px 0;background:var(--white);border-radius:var(--r);padding:17px;border:1.5px solid var(--border);box-shadow:var(--sh)}
+.khd{font-family:'Lora',serif;font-size:13.5px;font-weight:700;color:var(--Hdk);margin-bottom:11px;display:flex;align-items:center;gap:6px}
+.khd i{color:var(--K);font-size:12px}
+.kr{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border)}
+.kr:last-of-type{border-bottom:none}
+.ki{width:32px;height:32px;border-radius:9px;background:var(--H);color:var(--Klt);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.kl{font-size:9px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.kv{font-size:11px;font-weight:600;color:var(--text);margin-top:1px}
+.srow{display:flex;gap:9px;margin-top:13px;justify-content:center}
+.sb2{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:15px;text-decoration:none;transition:transform .18s}
+.sb2:hover{transform:translateY(-3px)}
+.sig{background:#F3E0F0;color:#C13584}.swa{background:#D9F5E0;color:#25D366}.sfb{background:#DCE8FB;color:#1877F2}.syt{background:#FDDEDE;color:#FF0000}
+
+/* ── FOOTER ── */
+.site-footer{margin-top:22px;background:var(--Hdk);padding:18px 17px;text-align:center}
+.fb{font-family:'Lora',serif;font-size:14px;color:var(--Klt);font-weight:700;margin-bottom:3px}
+.fs{font-size:9.5px;color:rgba(255,255,255,.5);line-height:1.6}
+.fc{margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.1);font-size:9.5px;color:rgba(255,255,255,.3)}
+
+/* ── PANEL ── */
+.panel{display:none;position:fixed;inset:0;z-index:300;background:var(--cream);overflow-y:auto;animation:panelIn .3s ease}
+.panel.active{display:block}
+@keyframes panelIn{from{transform:translateX(100%);opacity:.5}to{transform:translateX(0);opacity:1}}
+@keyframes panelOut{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:.4}}
+.p-inner{max-width:480px;margin:0 auto;min-height:100vh}
+.p-hdr{padding:13px 17px;display:flex;align-items:center;gap:11px;position:sticky;top:0;z-index:10;box-shadow:var(--sh)}
+.p-back{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background .18s}
+.p-back:hover{background:rgba(255,255,255,.28)}
+.p-title{font-size:14px;font-weight:800;color:#fff}
+.ph-H{background:linear-gradient(135deg,var(--Hdk),var(--Hlt))}
+.ph-P{background:linear-gradient(135deg,#7A3A00,var(--cP))}
+.ph-Pd{background:linear-gradient(135deg,#0E2554,var(--cPd))}
+.ph-PB{background:linear-gradient(135deg,#3A0080,var(--cPB))}
+.p-body{padding:15px 17px 44px}
+
+/* ── ACCORDION ── */
+.acc-wrap{display:flex;flex-direction:column;gap:9px}
+.acc-item{border-radius:15px;overflow:hidden;border:1.5px solid var(--border);background:var(--white);box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.acc-btn{width:100%;padding:13px;background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:11px;text-align:left}
+.acc-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.acc-lbl{flex:1;font-size:12px;font-weight:700;color:var(--text);line-height:1.35}
+.acc-chev{font-size:10.5px;color:var(--muted);transition:transform .25s;flex-shrink:0}
+.acc-btn.open .acc-chev{transform:rotate(180deg)}
+.acc-con{max-height:0;overflow:hidden;transition:max-height .38s ease;font-size:11.5px;color:var(--text);line-height:1.78;padding:0 13px}
+.acc-con.open{padding:0 13px 14px}
+.acc-con p{margin-bottom:7px}
+.acc-con ol,.acc-con ul{padding-left:17px;margin-bottom:9px}
+.acc-con li{margin-bottom:3px}
+.acc-con small{font-size:10px;color:var(--muted);display:block;margin-top:7px;line-height:1.6}
+.acc-con img{width:100%;border-radius:9px;margin:9px 0;cursor:pointer;border:1px solid var(--border)}
+.acc-con strong{color:var(--Hdk)}
+
+/* ── BUTTONS ── */
+.btn{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px 15px;border:none;border-radius:11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11.5px;font-weight:700;cursor:pointer;margin-top:7px;text-decoration:none;transition:transform .18s,opacity .18s}
+.btn:hover{opacity:.88}.btn:active{transform:scale(.97)}
+.bH{background:var(--H);color:#fff}.bP{background:var(--cP);color:#fff}
+.bPd{background:var(--cPd);color:#fff}.bPB{background:var(--cPB);color:#fff}
+.bK{background:var(--K);color:var(--Hdk)}.bWA{background:#25D366;color:#fff}
+.btn-grp{display:flex;flex-direction:column;gap:7px;margin-top:11px}
+
+/* info / warn */
+.ibox{background:var(--Hpale);border:1px solid #B6DFCA;border-radius:11px;padding:11px 13px;font-size:11px;color:var(--Hdk);margin-bottom:11px;line-height:1.65;display:flex;gap:9px;align-items:flex-start}
+.ibox i{color:var(--H);margin-top:2px;flex-shrink:0}
+.wbox{background:#FFF8E0;border:1px solid var(--K);border-radius:11px;padding:11px 13px;font-size:11px;color:#7A5A00;margin-bottom:11px;line-height:1.65;display:flex;gap:9px;align-items:flex-start}
+.wbox i{color:var(--K);margin-top:2px;flex-shrink:0}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:20px;right:16px;z-index:400;display:flex;align-items:center;gap:0;cursor:pointer;text-decoration:none}
+.wa-lbl{background:#fff;color:#1A5C30;font-size:10.5px;font-weight:700;padding:7px 13px 7px 15px;border-radius:30px 0 0 30px;box-shadow:0 3px 14px rgba(0,0,0,.14);white-space:nowrap;display:none;animation:fadeL .2s ease}
+.wa-float:hover .wa-lbl{display:block}
+@keyframes fadeL{from{opacity:0;transform:translateX(5px)}to{opacity:1;transform:translateX(0)}}
+.wa-btn{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.45);font-size:23px;color:#fff;animation:waPulse 2.6s infinite}
+@keyframes waPulse{0%{box-shadow:0 4px 18px rgba(37,211,102,.45)}50%{box-shadow:0 4px 28px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.15)}100%{box-shadow:0 4px 18px rgba(37,211,102,.45)}}
+
+/* ── LIGHTBOX ── */
+.img-pop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:999;align-items:center;justify-content:center;padding:18px}
+.img-pop.show{display:flex}
+.img-pop img{max-width:100%;max-height:90vh;border-radius:11px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.ip-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff}
+
+/* ── VIDEO MODAL ── */
+.vid-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:600;align-items:center;justify-content:center;padding:14px}
+.vid-modal.show{display:flex}
+.vid-modal video{max-width:100%;max-height:86vh;border-radius:11px}
+.vid-close{position:absolute;top:13px;right:13px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#fff;border:none}
+
+/* ── DISCLAIMER ── */
+.disc-ov{position:fixed;inset:0;background:rgba(10,30,15,.82);z-index:500;display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(5px)}
+.disc-box{background:var(--white);border-radius:24px 24px 0 0;padding:24px 20px 34px;max-width:480px;width:100%;animation:slideUp .35s ease}
+@keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.d-handle{width:36px;height:4px;background:var(--border);border-radius:4px;margin:0 auto 16px}
+.d-ico{width:50px;height:50px;border-radius:14px;background:var(--H);color:var(--Klt);display:flex;align-items:center;justify-content:center;font-size:21px;margin:0 auto 11px}
+.d-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--Hdk);text-align:center;margin-bottom:7px}
+.d-text{font-size:11.5px;color:var(--muted);line-height:1.78;text-align:center;margin-bottom:18px}
+.d-btns{display:flex;gap:8px}
+.d-ok{flex:1;background:linear-gradient(135deg,var(--Hdk),var(--Hlt));color:#fff;border:none;border-radius:12px;padding:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;box-shadow:var(--sh)}
+.d-link{background:var(--Hpale);color:var(--Hdk);border:1.5px solid var(--border);border-radius:12px;padding:12px 15px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:5px}
+
+@media(min-width:520px){.wrap{margin:14px auto;border-radius:20px;min-height:auto}.p-inner{border-radius:20px;overflow:hidden}.disc-box{border-radius:24px;margin-bottom:28px}}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     HALAMAN UTAMA
+═══════════════════════════════════ -->
+<div class="wrap" id="mainPage">
+
+    <header class="site-header">
+        <div class="h-inner">
+            <div class="logo-ring">
+                <!-- Ganti dengan: <img src="assets/img/logo-pn.png" alt="Logo PN"> -->
+                <!-- <i class="fas fa-scale-balanced"></i> -->
+                 <img src="pnmtw -2.png">
+            </div>
+            <div class="h-text">
+                <h1>Pengadilan Negeri Muara Teweh</h1>
+                <p>Jl. Yetro Sinseng No.8, Lanjas, Kec. Teweh Tengah, Kabupaten Barito Utara, Kalimantan Tengah 73812</p>
+            </div>
+            <div class="h-badge">Kelas II</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-badge"><i class="fas fa-star"></i>&nbsp;Sistem Resmi Pengadilan&nbsp;<i class="fas fa-star"></i></div>
+        <div class="hero-seal"><i class="fas fa-landmark"></i></div>
+        <h2><span>SIGAP</span></h2>
+        <p class="hero-ak">
+            <b style="color:rgba(255,255,255,.88)">S</b>istem &nbsp;<b style="color:rgba(255,255,255,.88)">I</b>nformasi &nbsp;<b style="color:rgba(255,255,255,.88)">G</b>erbang &nbsp;<b style="color:rgba(255,255,255,.88)">A</b>kses &nbsp;<b style="color:rgba(255,255,255,.88)">P</b>engadilan<br>
+            <span style="font-size:10px;opacity:.7">PN Muara Teweh &mdash; Melayani dengan Transparan &amp; Akuntabel</span>
+        </p>
+        <div class="hero-pills">
+            <div class="hero-pill"><i class="fas fa-circle-check"></i><span>Transparan</span></div>
+            <div class="hero-pill"><i class="fas fa-bolt"></i><span>Cepat &amp; Mudah</span></div>
+            <div class="hero-pill"><i class="fas fa-shield-halved"></i><span>Akuntabel</span></div>
+        </div>
+    </section>
+
+    <div class="sec-title" data-aos="fade-up">
+        <div class="sec-line"></div>
+        <div><h3>Pilih Layanan</h3><p>4 kepaniteraan tersedia untuk Anda</p></div>
+    </div>
+
+    <div class="menu-grid">
+        <div class="mc mH" onclick="bukaPanel('pH')" data-aos="fade-up" data-aos-delay="60">
+            <div class="mc-top">
+                <div class="mc-ico"><i class="fas fa-landmark"></i></div>
+                <div class="mc-t">Hukum &amp;<br>Informasi</div>
+                <div class="mc-s">ERATERANG, Waarmeking, Surat Kuasa</div>
+            </div>
+            <div class="mc-foot"><div class="mc-cnt">3 layanan</div><div class="mc-arr"><i class="fas fa-chevron-right"></i></div></div>
+        </div>
+        <div class="mc mP" onclick="bukaPanel('pP')" data-aos="fade-up" data-aos-delay="100">
+            <div class="mc-top">
+                <div class="mc-ico"><i class="fas fa-gavel"></i></div>
+                <div class="mc-t">Perkara<br>Pidana</div>
+                <div class="mc-s">e-Berpadu, Besuk, Pelimpahan</div>
+            </div>
+            <div class="mc-foot"><div class="mc-cnt">5 layanan</div><div class="mc-arr"><i class="fas fa-chevron-right"></i></div></div>
+        </div>
+        <div class="mc mPd" onclick="bukaPanel('pPd')" data-aos="fade-up" data-aos-delay="140">
+            <div class="mc-top">
+                <div class="mc-ico"><i class="fas fa-balance-scale"></i></div>
+                <div class="mc-t">Perkara<br>Perdata</div>
+                <div class="mc-s">Gugatan, Permohonan, e-Court</div>
+            </div>
+            <div class="mc-foot"><div class="mc-cnt">3 layanan</div><div class="mc-arr"><i class="fas fa-chevron-right"></i></div></div>
+        </div>
+        <div class="mc mPB" onclick="bukaPanel('pPB')" data-aos="fade-up" data-aos-delay="180">
+            <div class="mc-top">
+                <div class="mc-ico"><i class="fas fa-hands-helping"></i></div>
+                <div class="mc-t">POSBAKUM<br>&amp; Prodeo</div>
+                <div class="mc-s">Bantuan hukum gratis bagi tidak mampu</div>
+            </div>
+            <div class="mc-foot"><div class="mc-cnt">3 layanan</div><div class="mc-arr"><i class="fas fa-chevron-right"></i></div></div>
+        </div>
+    </div>
+
+    <!-- ALUR -->
+    <div class="sec-title" data-aos="fade-up">
+        <div class="sec-line"></div>
+        <div><h3>Alur Pelayanan</h3><p>Panduan umum mengurus layanan</p></div>
+    </div>
+    <div class="alur-box" data-aos="fade-up">
+        <div class="at">&#128203; Tahapan Umum Pelayanan</div>
+        <div class="as">Berlaku untuk seluruh kepaniteraan</div>
+        <div class="alur-steps">
+            <div class="alur-step"><div class="sn">1</div><div class="sb"><div class="sname">Persiapan Berkas</div><div class="sdet">Siapkan dokumen persyaratan sesuai jenis layanan</div></div></div>
+            <div class="alur-step"><div class="sn">2</div><div class="sb"><div class="sname">Pengambilan Nomor Antrian</div><div class="sdet">Ambil nomor antrian di meja informasi atau secara online</div></div></div>
+            <div class="alur-step"><div class="sn">3</div><div class="sb"><div class="sname">Penyerahan &amp; Verifikasi Berkas</div><div class="sdet">Berkas diperiksa dan diverifikasi oleh petugas kepaniteraan</div></div></div>
+            <div class="alur-step"><div class="sn">4</div><div class="sb"><div class="sname">Pembayaran PNBP</div><div class="sdet">Lakukan pembayaran biaya negara jika diperlukan</div></div></div>
+            <div class="alur-step"><div class="sn">5</div><div class="sb"><div class="sname">Pengambilan Produk</div><div class="sdet">Dokumen/produk diberikan sesuai estimasi waktu layanan</div></div></div>
+        </div>
+    </div>
+
+    <!-- KONTAK -->
+    <div class="sec-title" data-aos="fade-up">
+        <div class="sec-line"></div>
+        <div><h3>Hubungi Kami</h3><p>Kami siap melayani Anda</p></div>
+    </div>
+    <div class="kontak-box" data-aos="fade-up">
+        <div class="khd"><i class="fas fa-headset"></i> Informasi Kontak</div>
+        <div class="kr"><div class="ki"><i class="fas fa-location-dot"></i></div><div><div class="kl">Alamat</div><div class="kv">Jl. Yetro Sinseng No.8, Lanjas, Kec. Teweh Tengah, Kabupaten Barito Utara, Kalimantan Tengah 73812</div></div></div>
+        <div class="kr"><div class="ki"><i class="fas fa-phone"></i></div><div><div class="kl">Telepon</div><div class="kv">(0519) 21044</div></div></div>
+        <div class="kr"><div class="ki"><i class="fas fa-envelope"></i></div><div><div class="kl">Email</div><div class="kv">pn.muarateweh1@gmail.com</div></div></div>
+        <div class="kr"><div class="ki"><i class="fas fa-clock"></i></div><div><div class="kl">Jam Pelayanan</div><div class="kv">Sen–Kam 08.00–16.00 &nbsp;|&nbsp; Jum 08.00–15.30 WIB</div></div></div>
+        <div class="srow">
+            <!-- ✏️ Ganti # dengan URL sosmed resmi PN Muara Teweh -->
+            <a href="https://www.instagram.com/pn_muarateweh/" class="sb2 sig"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/6285117699141" class="sb2 swa"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/pnmuarateweh/" class="sb2 sfb"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@pengadilannegerimuarateweh5179" class="sb2 syt"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="fb">SIGAP &mdash; PN Muara Teweh</div>
+        <div class="fs">Sistem Informasi Gerbang Akses Pengadilan<br>Pengadilan Negeri Muara Teweh Kelas II &mdash; Kalimantan Tengah</div>
+        <div class="fc">&copy; <?php echo date('Y'); ?> Pengadilan Negeri Muara Teweh. Hak cipta dilindungi.</div>
+    </footer>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PANEL HUKUM & INFORMASI
+═══════════════════════════════════ -->
+<div class="panel" id="pH">
+<div class="p-inner">
+    <div class="p-hdr ph-H">
+        <button class="p-back" onclick="tutupPanel('pH')"><i class="fas fa-arrow-left"></i></button>
+        <div class="p-title"><i class="fas fa-landmark"></i> Kepaniteraan Hukum &amp;&amp; Informasi</div>
+    </div>
+    <div class="p-body">
+        <div class="ibox"><i class="fas fa-circle-info"></i><span>Pilih jenis layanan untuk melihat persyaratan dan alur lengkapnya.</span></div>
+        <div class="acc-wrap">
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#D4EDDA;color:#1B6B3A"><i class="fas fa-shield-alt"></i></div>
+                    <span class="acc-lbl">Surat Keterangan Elektronik (ERATERANG)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Jenis Surat yang Dapat Diajukan:</strong></p>
+                    <ol><li>Surat Ket. Tidak Pernah Sebagai Terpidana</li><li>Surat Ket. Tidak Sedang Dicabut Hak Pilihnya</li><li>Surat Ket. Dipidana Karena Kealpaan Ringan / Alasan Politik</li><li>Surat Ket. Tidak Memiliki Tanggungan Utang</li><li>Surat Ket. Tidak Sedang Dinyatakan Pailit</li></ol>
+                    <p><strong>Persyaratan:</strong></p>
+                    <ol><li>e-KTP</li><li>SKCK Asli &amp; Fotokopi yang Dilegalisir</li><li>Foto Terbaru</li><li>Surat Pernyataan Tidak Pernah Dipidana</li><li>Surat Pernyataan Tidak Pernah Dicabut Hak Pilihnya</li><li>Alamat E-Mail Aktif</li></ol>
+                    <!-- Aktifkan jika gambar tersedia: -->
+                    <!-- <img src="assets/img/alur/hukum/eraterang.png" alt="Alur ERATERANG" onclick="bukaGambar(this.src)"> -->
+                    <div class="btn-grp">
+                        <button class="btn bH" onclick="openVideo('assets/video/hukum/eraterang.mp4')"><i class="fas fa-play-circle"></i> Video Pendaftaran Akun ERATERANG</button>
+                        <button class="btn bH" onclick="openVideo('assets/video/hukum/elsuket.mp4')"><i class="fas fa-play-circle"></i> Video Alur Permohonan Surat Keterangan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E8EAF6;color:#3949AB"><i class="fas fa-file-signature"></i></div>
+                    <span class="acc-lbl">Legalisasi Akta di Bawah Tangan (Waarmeking)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Persyaratan:</strong></p>
+                    <ol><li>Surat Permohonan</li><li>KTP masing-masing ahli waris</li><li>Kartu Keluarga (KK)</li><li>Fotokopi &amp; Buku Tabungan Asli</li><li>Surat Keterangan Waris</li><li>Surat Keterangan Kematian</li><li>Akta Kelahiran masing-masing ahli waris</li></ol>
+                    <!-- <img src="assets/img/alur/hukum/waarmeking.png" alt="Alur Waarmeking" onclick="bukaGambar(this.src)"> -->
+                    <div class="btn-grp">
+                        <button class="btn bH" onclick="openVideo('assets/video/hukum/waarmeking.mp4')"><i class="fas fa-play-circle"></i> Video Alur Waarmeking</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E3F2FD;color:#1565C0"><i class="fas fa-handshake"></i></div>
+                    <span class="acc-lbl">Pendaftaran Surat Kuasa Khusus / Insidentil</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Surat Kuasa Khusus:</strong></p>
+                    <ol><li>Asli &amp; salinan/fotokopi Surat Kuasa</li><li>Materai Rp 10.000,-</li><li>Fotokopi Kartu Advokat / KTA</li><li>Fotokopi Berita Acara Penyumpahan Advokat (dari Pengadilan Tinggi)</li></ol>
+                    <p><strong>Surat Kuasa Insidentil:</strong></p>
+                    <ol><li>Surat Permohonan Izin Insidentil</li><li>Materai Rp 10.000,-</li><li>Surat Keterangan Hubungan Keluarga dari Lurah/Kades</li><li>Fotokopi KTP Pemberi &amp; Penerima Kuasa</li><li>Surat Kuasa Insidentil Asli</li></ol>
+                    <!-- <img src="assets/img/alur/hukum/surat_kuasa.png" alt="Alur Surat Kuasa" onclick="bukaGambar(this.src)"> -->
+                    <div class="btn-grp">
+                        <button class="btn bH" onclick="openVideo('assets/video/hukum/suratkuasa.mp4')"><i class="fas fa-play-circle"></i> Video Alur Surat Kuasa</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="btn-grp" style="margin-top:16px">
+            <!-- ✏️ Ganti nomor WA dengan nomor resmi kepaniteraan hukum -->
+            <a href="https://wa.me/6285117699141?text=Halo%2C%20saya%20ingin%20menanyakan%20layanan%20Kepaniteraan%20Hukum%20PN%20Muara%20Teweh." class="btn bWA" target="_blank"><i class="fab fa-whatsapp"></i> Chat Kepaniteraan Hukum</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PANEL PIDANA
+═══════════════════════════════════ -->
+<div class="panel" id="pP">
+<div class="p-inner">
+    <div class="p-hdr ph-P">
+        <button class="p-back" onclick="tutupPanel('pP')"><i class="fas fa-arrow-left"></i></button>
+        <div class="p-title"><i class="fas fa-gavel"></i> Kepaniteraan Pidana</div>
+    </div>
+    <div class="p-body">
+        <div class="ibox"><i class="fas fa-circle-info"></i><span>Sebagian layanan dapat dilakukan secara elektronik melalui <strong>e-BERPADU</strong> Mahkamah Agung.</span></div>
+        <div class="acc-wrap">
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#D4EDDA;color:#1B6B3A"><i class="fas fa-file-signature"></i></div>
+                    <span class="acc-lbl">e-BERPADU (Berkas Pidana Terpadu)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Integrasi berkas pidana antar penegak hukum (Kepolisian, Kejaksaan, KPK, Ditjen Pemasyarakatan). Layanan yang tersedia:</p>
+                    <ol><li>Pelimpahan Berkas Pidana Elektronik</li><li>Penetapan Izin Penggeledahan &amp; Penyitaan</li><li>Perpanjangan / Penangguhan / Pembantaran Penahanan</li><li>Permohonan Penetapan Diversi</li><li>Pinjam Pakai Barang Bukti</li><li>Izin Besuk Tahanan Online</li><li>Pendaftaran Praperadilan Elektronik</li><li>Izin Keluar / Pengalihan Penahanan</li></ol>
+                    <div class="btn-grp">
+                        <a href="https://eberpadu.mahkamahagung.go.id/#layanan" target="_blank" class="btn bH"><i class="fas fa-external-link-alt"></i> Buka Aplikasi e-BERPADU</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E3F2FD;color:#1565C0"><i class="fas fa-user-check"></i></div>
+                    <span class="acc-lbl">Izin Besuk Tahanan (e-Berpadu)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Dilakukan melalui aplikasi e-BERPADU. Dokumen yang disiapkan:</p>
+                    <ul><li>Soft Copy e-KTP pemohon</li></ul>
+                    <!-- <img src="assets/img/alur/pidana/besuk_tahanan.png" alt="Alur Izin Besuk" onclick="bukaGambar(this.src)"> -->
+                    <div class="btn-grp">
+                        <button class="btn bP" onclick="openVideo('assets/video/pidana/Izin_Besuk.mp4')"><i class="fas fa-play-circle"></i> Video Alur Izin Besuk Tahanan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#FFF8E1;color:#F57F17"><i class="fas fa-box-open"></i></div>
+                    <span class="acc-lbl">Pinjam Pakai Barang Bukti (e-Berpadu)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Isi formulir pada aplikasi e-BERPADU. Dokumen yang diperlukan:</p>
+                    <ol><li>Scan KTP</li><li>Surat Permohonan Izin Pinjam Pakai Barang Bukti kepada Ketua Majelis</li><li>Scan Bukti Kepemilikan (BPKB / Sertifikat)</li><li>Nomor Perkara (dari SIPP)</li></ol>
+                    <!-- <img src="assets/img/alur/pidana/barang_bukti.png" alt="Alur Barang Bukti" onclick="bukaGambar(this.src)"> -->
+                    <div class="btn-grp">
+                        <button class="btn bP" onclick="openVideo('assets/video/pidana/Izin_Pinjam_Pakai_Barang_Bukti.mp4')"><i class="fas fa-play-circle"></i> Video Alur Pinjam Pakai Barang Bukti</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#D4EDDA;color:#1B6B3A"><i class="fas fa-folder-arrow-up"></i></div>
+                    <span class="acc-lbl">Pelimpahan Perkara (e-BERPADU)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Syarat Berkas Pelimpahan oleh Penyidik:</strong></p>
+                    <ol><li>Sampul &amp; Daftar Isi Berkas Perkara</li><li>Resume Penyidik</li><li>Laporan Polisi &amp; Surat Perintah Penyidikan</li><li>BA Pemeriksaan Saksi &amp; Tersangka</li><li>Surat Perintah Penangkapan &amp; Penahanan</li><li>Surat Perintah Penyitaan &amp; Penetapan Penyitaan</li><li>Daftar Saksi &amp; Barang Bukti</li><li>Surat Dakwaan</li><li>Dokumen pendukung lainnya sesuai perkara</li></ol>
+                    <!-- <img src="assets/img/alur/pidana/pelimpahan.png" alt="Alur Pelimpahan" onclick="bukaGambar(this.src)"> -->
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#F3E5F5;color:#6A1B9A"><i class="fas fa-traffic-light"></i></div>
+                    <span class="acc-lbl">Pidana Cepat &amp; Lalu Lintas</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Acara pemeriksaan khusus untuk Tindak Pidana Ringan (Tipiring) dan Pelanggaran Lalu Lintas, dilimpahkan langsung dari Penyidik ke PN tanpa melalui Jaksa.</p>
+                    <p><strong>Syarat Berkas:</strong></p>
+                    <ol><li>Surat Pengantar Pelimpahan dari Penyidik kepada Ketua Pengadilan</li><li>Surat Dakwaan &amp; Surat Kuasa Penyidik</li><li>Berkas Perkara termasuk BAP Saksi</li><li>Berita Acara Pendapat (Resume)</li><li>Fotokopi Identitas Penyidik (KTA &amp; KTP)</li><li>Soft copy resume &amp; berkas ringkasan</li><li>Daftar saksi dan barang bukti</li></ol>
+                    <!-- <img src="assets/img/alur/pidana/pidana_cepat.png" alt="Alur Pidana Cepat" onclick="bukaGambar(this.src)"> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="btn-grp" style="margin-top:16px">
+            <a href="https://wa.me/6285117699141?text=Halo%2C%20saya%20ingin%20menanyakan%20layanan%20Kepaniteraan%20Pidana%20PN%20Muara%20Teweh." class="btn bWA" target="_blank"><i class="fab fa-whatsapp"></i> Chat Kepaniteraan Pidana</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PANEL PERDATA
+═══════════════════════════════════ -->
+<div class="panel" id="pPd">
+<div class="p-inner">
+    <div class="p-hdr ph-Pd">
+        <button class="p-back" onclick="tutupPanel('pPd')"><i class="fas fa-arrow-left"></i></button>
+        <div class="p-title">&#9878;&#65039; Kepaniteraan Perdata</div>
+    </div>
+    <div class="p-body">
+        <div class="wbox"><i class="fas fa-triangle-exclamation"></i><span>Pendaftaran perkara kini dapat dilakukan secara online melalui <strong>e-Court Mahkamah Agung</strong>.</span></div>
+        <div class="acc-wrap">
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E3F2FD;color:#1565C0"><i class="fas fa-file-signature"></i></div>
+                    <span class="acc-lbl">Pendaftaran Permohonan</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Jenis Permohonan:</strong></p>
+                    <ol><li>Perubahan/Perbaikan data Akta Kelahiran atau Akta Perkawinan</li><li>Penetapan Ahli Waris (non-muslim atau tanpa akta)</li><li>Izin Poligami (non-muslim)</li><li>Permohonan Perwalian atau Pengangkatan Pengampu</li></ol>
+                    <p><strong>Persyaratan Umum:</strong></p>
+                    <ol><li>Fotokopi KTP</li><li>Kartu Keluarga (KK)</li><li>Surat Permohonan</li><li>Nomor Rekening Bank</li><li>Alamat Email Aktif</li><li>No. WhatsApp Aktif</li></ol>
+                    <!-- <img src="assets/img/alur/perdata/permohonan.png" alt="Alur Permohonan" onclick="bukaGambar(this.src)"> -->
+                    <small>Catatan: Tidak ada pihak lawan (hanya pemohon). Tujuan mendapatkan penetapan (Beschikking) untuk mengesahkan suatu status hukum.</small>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#FFEBEE;color:#C62828"><i class="fas fa-gavel"></i></div>
+                    <span class="acc-lbl">Pendaftaran Gugatan Biasa</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Jenis Sengketa:</strong></p>
+                    <ol><li>Sengketa Kepemilikan &amp; Hak atas Tanah</li><li>Gugatan Pembatalan Perjanjian</li><li>Sengketa Warisan (Perdata Umum)</li><li>Sengketa Perusahaan (RUPS, dll.)</li><li>Gugatan Perceraian (non-muslim)</li></ol>
+                    <p><strong>Persyaratan:</strong></p>
+                    <ol><li>Surat Kuasa Khusus (SKK) jika pendaftar advokat</li><li>Dokumen Gugatan (PDF &amp; Word)</li><li>Dokumen Bukti (PDF atau ZIP/RAR)</li></ol>
+                    <!-- <img src="assets/img/alur/perdata/gugatan_biasa.png" alt="Alur Gugatan Biasa" onclick="bukaGambar(this.src)"> -->
+                    <small>Catatan: Tidak ada batasan nilai gugatan. Jumlah pihak tidak dibatasi. Wajib melalui tahap Replik, Duplik, Pembuktian, dan Kesimpulan.</small>
+                    <div class="btn-grp">
+                        <a href="https://youtu.be/nOAOF1lXmMk?t=96" target="_blank" class="btn bPd"><i class="fas fa-play-circle"></i> Video Tutorial e-Court</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E0F2F1;color:#00695C"><i class="fas fa-file-circle-check"></i></div>
+                    <span class="acc-lbl">Pendaftaran Gugatan Sederhana</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p><strong>Jenis Sengketa:</strong></p>
+                    <ol><li>Wanprestasi (Cidera Janji) dari perjanjian</li><li>Perbuatan Melawan Hukum (PMH)</li><li>Utang-piutang sederhana</li></ol>
+                    <p><strong>Persyaratan:</strong></p>
+                    <ol><li>Dokumen Gugatan (PDF &amp; Word)</li><li>Dokumen Bukti (PDF atau ZIP/RAR)</li></ol>
+                    <!-- <img src="assets/img/alur/perdata/gugatan_sederhana.png" alt="Alur Gugatan Sederhana" onclick="bukaGambar(this.src)"> -->
+                    <small>Catatan: Nilai materiil maks. Rp 500.000.000. Hanya 1 penggugat &amp; 1 tergugat. Tergugat harus berada di wilayah hukum yang sama. Tidak berlaku untuk sengketa tanah.</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="btn-grp" style="margin-top:16px">
+            <a href="https://ecourt.mahkamahagung.go.id" target="_blank" class="btn bPd"><i class="fas fa-external-link-alt"></i> Buka e-Court Mahkamah Agung</a>
+            <a href="https://wa.me/6285117699141?text=Halo%2C%20saya%20ingin%20menanyakan%20layanan%20Kepaniteraan%20Perdata%20PN%20Muara%20Teweh." class="btn bWA" target="_blank"><i class="fab fa-whatsapp"></i> Chat Kepaniteraan Perdata</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     PANEL POSBAKUM & PRODEO
+═══════════════════════════════════ -->
+<div class="panel" id="pPB">
+<div class="p-inner">
+    <div class="p-hdr ph-PB">
+        <button class="p-back" onclick="tutupPanel('pPB')"><i class="fas fa-arrow-left"></i></button>
+        <div class="p-title">&#128587; POSBAKUM &amp; Layanan Tidak Mampu</div>
+    </div>
+    <div class="p-body">
+        <div class="ibox"><i class="fas fa-heart"></i><span>Layanan ini diperuntukkan bagi masyarakat yang <strong>tidak mampu secara ekonomi</strong>. Seluruh layanan diberikan secara <strong>gratis / cuma-cuma</strong>.</span></div>
+        <div class="acc-wrap">
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#F3EEFF;color:#6B3AB8"><i class="fas fa-building-columns"></i></div>
+                    <span class="acc-lbl">POSBAKUM (Pos Bantuan Hukum)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Posbakum memberikan informasi, konsultasi, advis hukum, serta bantuan pembuatan dokumen hukum secara cuma-cuma bagi yang membutuhkan.</p>
+                    <p><strong>Jenis Layanan:</strong></p>
+                    <ol><li>Pemberian informasi, konsultasi, atau advis hukum</li><li>Bantuan pembuatan dokumen hukum</li><li>Informasi daftar Organisasi Bantuan Hukum (OBH) yang bisa memberikan bantuan gratis</li></ol>
+                    <p><strong>Siapa yang Berhak?</strong></p>
+                    <ol><li>Surat Keterangan Tidak Mampu (SKTM) dari Desa/Kelurahan</li><li>Surat Keterangan Tunjangan Sosial (KKM, Jamkesmas, Raskin, PKH, BLT, KPS, dll.)</li><li>Surat pernyataan tidak mampu membayar jasa advokat</li></ol>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#FFF8E1;color:#E65100"><i class="fas fa-box-open"></i></div>
+                    <span class="acc-lbl">Pembebasan Biaya Perkara (Prodeo)</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Prodeo adalah fasilitas di mana <strong>negara menanggung seluruh biaya</strong> proses berperkara di Pengadilan bagi masyarakat tidak mampu secara ekonomi.</p>
+                    <p><strong>Siapa yang Berhak?</strong></p>
+                    <ol><li>Surat Keterangan Tidak Mampu (SKTM) dari Kepala Desa/Lurah/Kepala Wilayah setempat</li><li>Dokumen tunjangan sosial: KKM, Jamkesmas, Raskin, PKH, BLT, atau KPS</li></ol>
+                    <div class="btn-grp">
+                        <a href="https://youtu.be/2tfUdYShl2k?si=epe0OoGMLXuJOlri" target="_blank" class="btn bPB"><i class="fas fa-play-circle"></i> Video Informasi Prodeo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acc-item">
+                <button class="acc-btn" onclick="toggleAcc(this)">
+                    <div class="acc-ico" style="background:#E8F5E9;color:#2E7D32"><i class="fas fa-house-flag"></i></div>
+                    <span class="acc-lbl">Sidang di Luar Gedung Pengadilan</span>
+                    <i class="fas fa-chevron-down acc-chev"></i>
+                </button>
+                <div class="acc-con">
+                    <p>Sidang yang dilaksanakan di luar gedung Pengadilan untuk mempermudah warga yang tidak mampu menjangkau kantor Pengadilan karena hambatan biaya, fisik, atau geografis.</p>
+                    <p><strong>Lokasi Pelaksanaan:</strong></p>
+                    <ol><li>Tempat sidang tetap atau sidang keliling</li><li>Kantor Pemerintah setempat (Kecamatan, KUA, Kantor Desa)</li><li>Gedung lainnya yang disepakati bersama</li></ol>
+                    <p><strong>Lingkup Perkara:</strong></p>
+                    <ol><li>Permohonan Ganti Nama</li><li>Perbaikan Kesalahan dalam Akta Kelahiran</li><li>Permohonan Akta Kelahiran Terlambat</li><li>Permohonan Pengangkatan Anak</li><li>Itsbat Nikah (Pengesahan Perkawinan)</li><li>Gugatan/Permohonan Cerai Sederhana</li></ol>
+                </div>
+            </div>
+
+        </div>
+        <div class="btn-grp" style="margin-top:16px">
+            <a href="https://wa.me/6285117699141?text=Halo%2C%20saya%20ingin%20menanyakan%20layanan%20POSBAKUM%20PN%20Muara%20Teweh." class="btn bWA" target="_blank"><i class="fab fa-whatsapp"></i> Chat Layanan POSBAKUM</a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     WA FLOATING BUTTON
+═══════════════════════════════════ -->
+<!-- ✏️ Ganti nomor WA di href dengan nomor resmi PN Muara Teweh -->
+<a class="wa-float" href="https://wa.me/6285117699141?text=Halo%2C%20saya%20ingin%20menanyakan%20informasi%20layanan%20SIGAP%20PN%20Muara%20Teweh." target="_blank">
+    <div class="wa-lbl"><i class="fas fa-headset"></i>&nbsp;Tanya Layanan</div>
+    <div class="wa-btn"><i class="fab fa-whatsapp"></i></div>
+</a>
+
+
+<!-- ═══════════════════════════════════
+     IMAGE LIGHTBOX
+═══════════════════════════════════ -->
+<div class="img-pop" id="imgPop" onclick="tutupGambar()">
+    <div class="ip-close"><i class="fas fa-times"></i></div>
+    <img id="imgPopSrc" src="" alt="">
+</div>
+
+
+<!-- ═══════════════════════════════════
+     VIDEO MODAL
+═══════════════════════════════════ -->
+<div class="vid-modal" id="vidModal">
+    <button class="vid-close" onclick="tutupVideo()"><i class="fas fa-times"></i></button>
+    <video id="vidPlayer" controls playsinline>Browser Anda tidak mendukung tag video.</video>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     DISCLAIMER POPUP
+═══════════════════════════════════ -->
+<div class="disc-ov" id="discOv">
+    <div class="disc-box">
+        <div class="d-handle"></div>
+        <div class="d-ico"><i class="fas fa-circle-info"></i></div>
+        <div class="d-title">Selamat Datang di SIGAP</div>
+        <p class="d-text">
+            <strong>S</strong>istem <strong>I</strong>nformasi <strong>G</strong>erbang <strong>A</strong>kses <strong>P</strong>engadilan ini menyediakan informasi layanan, persyaratan, dan alur pelayanan Pengadilan Negeri Muara Teweh.<br><br>
+            Pelaksanaan layanan dapat disesuaikan dengan kondisi dan kebijakan pengadilan yang berlaku.
+        </p>
+        <div class="d-btns">
+            <a class="d-link" href="https://pn-muarateweh.go.id" target="_blank"><i class="fas fa-globe"></i>&nbsp;Website</a>
+            <button class="d-ok" onclick="tutupDisc()"><i class="fas fa-circle-check"></i>&nbsp;&nbsp;Saya Mengerti</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     JS
+═══════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+AOS.init({duration:460,once:true,offset:48});
+
+/* Disclaimer */
+document.addEventListener('DOMContentLoaded',function(){
+    if(localStorage.getItem('sigap_mtwh')) document.getElementById('discOv').style.display='none';
+});
+function tutupDisc(){
+    localStorage.setItem('sigap_mtwh','1');
+    var e=document.getElementById('discOv');
+    e.style.opacity='0';e.style.transition='opacity .3s';
+    setTimeout(function(){e.style.display='none';},320);
+}
+
+/* Panel slide-in / slide-out */
+var pannels=['pH','pP','pPd','pPB'];
+function bukaPanel(id){
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow='hidden';
+    document.getElementById(id).scrollTop=0;
+}
+function tutupPanel(id){
+    var el=document.getElementById(id);
+    el.style.animation='panelOut .26s ease forwards';
+    setTimeout(function(){
+        el.classList.remove('active');
+        el.style.animation='';
+        document.body.style.overflow='';
+    },250);
+}
+window.addEventListener('popstate',function(){
+    pannels.forEach(function(id){
+        var el=document.getElementById(id);
+        if(el&&el.classList.contains('active')) tutupPanel(id);
+    });
+});
+
+/* Accordion — hanya 1 terbuka per panel */
+function toggleAcc(btn){
+    var con=btn.nextElementSibling;
+    var isOpen=con.classList.contains('open');
+    var wrap=btn.closest('.acc-wrap');
+    if(wrap){
+        wrap.querySelectorAll('.acc-con').forEach(function(c){c.style.maxHeight='0';c.classList.remove('open');});
+        wrap.querySelectorAll('.acc-btn').forEach(function(b){b.classList.remove('open');});
+    }
+    if(!isOpen){
+        con.classList.add('open');
+        con.style.maxHeight=con.scrollHeight+'px';
+        btn.classList.add('open');
+    }
+}
+
+/* Lightbox */
+function bukaGambar(src){
+    document.getElementById('imgPopSrc').src=src;
+    document.getElementById('imgPop').classList.add('show');
+}
+function tutupGambar(){document.getElementById('imgPop').classList.remove('show');}
+
+/* Video */
+function openVideo(path){
+    var p=document.getElementById('vidPlayer');
+    p.src=path;p.load();
+    document.getElementById('vidModal').classList.add('show');
+    p.play().catch(function(){});
+}
+function tutupVideo(){
+    var p=document.getElementById('vidPlayer');
+    p.pause();p.src='';
+    document.getElementById('vidModal').classList.remove('show');
+    if(document.exitFullscreen) document.exitFullscreen();
+}
+document.getElementById('vidModal').addEventListener('click',function(e){
+    if(e.target===this) tutupVideo();
+});
+</script>
+
+</body>
+</html>
